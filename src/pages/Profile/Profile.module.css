@@ -1,0 +1,25 @@
+body {
+  background-color: gainsboro;
+  color: dimgray;
+  max-width: max-content;
+  margin: auto;
+}
+
+.sidebar_container {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgb(63, 67, 80);
+}
+
+.sidebar {
+  display: flex;
+  width: 14rem;
+  height: 90%;
+  justify-content: start;
+  flex-direction: column;
+  border: 1px solid black;
+  padding: 15px;
+  margin: 10px;
+}
