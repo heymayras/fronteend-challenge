@@ -1,10 +1,31 @@
 import { useEffect, useState } from "react";
 import styles from "./Profile.module.css";
-import { BsStar, BsPeople, BsHeart, BsDot } from "react-icons/bs";
+import {
+  BsStar,
+  BsPeople,
+  BsHeart,
+  BsDot,
+  BsBuilding,
+  BsLink45Deg,
+} from "react-icons/bs";
+import { GoLocation } from "react-icons/go";
+import { FiTwitter } from "react-icons/fi";
+import { HiOutlineMail } from "react-icons/hi";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { Button } from "reactstrap";
+
+function formatDate(dateString) {
+  const rtf = new Intl.RelativeTimeFormat("en", { style: "long" });
+  const date = Date.parse(dateString);
+  const currentDate = Date.now();
+  const diffInMs = currentDate - date;
+  const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+  return rtf.format(-Math.ceil(diffInDays), "day");
+}
 
 export function Profile() {
+  const navigate = useNavigate();
   const { user } = useParams();
   const [listUser, setListUser] = useState({});
   const [repos, setRepos] = useState([]);
@@ -20,8 +41,12 @@ export function Profile() {
           await axios
             .get(`https://api.github.com/users/${user}/repos`)
             .then((res) => {
-              console.log(res.data);
-              setRepos(res.data);
+              const reposSorted = res.data.sort((a, b) => {
+                if (a.stargazers_count < b.stargazers_count) return 1;
+                if (a.stargazers_count > b.stargazers_count) return -1;
+                return 0;
+              });
+              setRepos(reposSorted);
             })
             .catch((e) => console.log(e));
         })
@@ -67,6 +92,29 @@ export function Profile() {
             <p>0</p>
             <p>stars</p>
           </div>
+          <div className={styles.contatos}>
+            <p>
+              {" "}
+              <BsBuilding /> {listUser.company}
+            </p>
+            <p>
+              <GoLocation /> {listUser.location}
+            </p>
+            <p>
+              <HiOutlineMail /> {listUser.email}
+            </p>
+            <p>
+              {" "}
+              <BsLink45Deg /> {listUser.blog}
+            </p>
+            <p>
+              <FiTwitter /> {listUser.twitter_username}
+            </p>
+          </div>
+          <div className={styles.checkout}>
+            {" "}
+            <Button onClick={() => [navigate(`/`)]}>Sair</Button>
+          </div>
         </div>
       </div>
       <div className={styles.listaRepos}>
@@ -82,8 +130,8 @@ export function Profile() {
                   </a>
                   <h3> {repo.description}</h3>
                   <p>
-                    <BsStar /> {repo.stargazers_count} <BsDot />{" "}
-                    {repo.updated_at}
+                    <BsStar /> {repo.stargazers_count} <BsDot /> Updated{" "}
+                    {formatDate(repo.updated_at)}
                   </p>
                 </div>
               </>

@@ -11,6 +11,7 @@ body {
   color: dimgray;
   max-width: max-content;
   margin: auto;
+  left: 0;
 }
 
 a {

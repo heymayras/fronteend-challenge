@@ -1,12 +1,6 @@
-body {
-  background-color: gainsboro;
-  color: dimgray;
-  max-width: max-content;
-  margin: auto;
-}
-
 .sidebar_container {
   height: 100vh;
+  width: 20rem;
   position: fixed;
   top: 0;
   left: 0;
@@ -15,9 +9,9 @@ body {
 
 .sidebar {
   display: flex;
-  width: 20rem;
+  width: 100%;
   height: 100%;
-  justify-content: start;
+  justify-content: flex-start;
   flex-direction: column;
   border: 1px solid black;
   padding: 15px;
@@ -26,10 +20,11 @@ body {
 .sidebar img {
   max-width: 200px;
   max-height: 200px;
-  width: auto;
-  height: auto;
-  display: flex;
+  margin-left: 15%;
+  margin-top: 2rem;
   text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .details_user {
@@ -49,7 +44,7 @@ body {
 
 .biografia {
   color: rgb(127, 145, 179);
-  font-size: x-small;
+  font-size: small;
   justify-content: flex-start;
   margin-bottom: 1rem;
 }
@@ -68,6 +63,63 @@ body {
 }
 
 .listaRepos {
+  justify-content: start;
   margin-top: 2rem;
-  left: 10%;
+  width: 100%;
+  height: 100%;
+}
+
+.dadosRepos {
+  display: flex-start;
+  width: 100%;
+  height: 100%;
+}
+
+.dadosRepos h2 {
+  color: rgb(63, 67, 80);
+  font-weight: 200px;
+  font-family: "Lucida Sans Unicode";
+  font-size: larger;
+  margin-top: 2px;
+}
+
+.dadosRepos h3 {
+  font-size: medium;
+  font-weight: 100;
+  margin-bottom: 2px;
+}
+
+.contatos {
+  color: rgb(190, 190, 190);
+  font-size: smaller;
+  display: flexbox;
+  margin-top: 2rem;
+  font-size: large;
+}
+
+.contatos p {
+  word-spacing: 2px;
+  margin-top: 2px;
+}
+
+.checkout button {
+  width: 120px;
+  padding: 10px 20px;
+  background-color: rgb(100, 100, 100);
+  color: white;
+  cursor: pointer;
+  border-radius: 0 4px 4px 0;
+  border: 1px solid;
+  border-color: black;
+  margin-top: 8rem;
+  margin-left: 25%;
+  display: flex;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkout button:hover {
+  background-color: darkblue;
 }
