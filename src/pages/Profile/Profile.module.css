@@ -15,11 +15,59 @@ body {
 
 .sidebar {
   display: flex;
-  width: 14rem;
-  height: 90%;
+  width: 20rem;
+  height: 100%;
   justify-content: start;
   flex-direction: column;
   border: 1px solid black;
   padding: 15px;
-  margin: 10px;
+}
+
+.sidebar img {
+  max-width: 200px;
+  max-height: 200px;
+  width: auto;
+  height: auto;
+  display: flex;
+  text-align: center;
+}
+
+.details_user {
+  margin: 1rem 0 1rem 0;
+}
+
+.details_user h3 {
+  color: rgb(207, 207, 207);
+  font-weight: 100;
+  font-family: "Lucida Sans Unicode";
+}
+
+.details_user p {
+  color: rgb(190, 190, 190);
+  font-size: smaller;
+}
+
+.biografia {
+  color: rgb(127, 145, 179);
+  font-size: x-small;
+  justify-content: flex-start;
+  margin-bottom: 1rem;
+}
+
+.followers_details {
+  color: rgb(190, 190, 190);
+  font-size: small;
+  display: flex;
+  letter-spacing: normal;
+}
+
+.followers_details p {
+  margin-inline: 8px;
+  margin-left: 1px;
+  word-spacing: 5px;
+}
+
+.listaRepos {
+  margin-top: 2rem;
+  left: 10%;
 }
